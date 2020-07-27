@@ -1,0 +1,50 @@
+<html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <title>userRegister</title>
+    <meta charset="UTF-8">
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div class="limiter">
+    <div class="container-login100">
+        <div><p>
+            <c:if test="${error}">
+                <c:out value="LOGIN FAILED" />
+            </c:if>
+        </p></div>
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form class="login100-form validate-form flex-sb flex-w" action="/userRegister" modelAttribute="newUser" method="post">
+					<span class="login100-form-title p-b-51">
+						Register
+					</span>
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" type="text" name="firstName" placeholder="firstName">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" type="text" name="userName" placeholder="userName">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" type="text" name="password" placeholder="password">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit">
+                        Register
+                    </button>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
