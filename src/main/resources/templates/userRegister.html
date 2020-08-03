@@ -2,49 +2,40 @@
 <head>
     <title>userRegister</title>
     <meta charset="UTF-8">
-    <style>
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-<div class="limiter">
-    <div class="container-login100">
-        <div><p>
-            <c:if test="${error}">
-                <c:out value="LOGIN FAILED" />
-            </c:if>
-        </p></div>
+<div class="form">
+    <div class="footer"><pre>Designed by Aleksandr Rallo  </pre></div>
         <div class="wrap-login100 p-t-50 p-b-90">
-            <form class="login100-form validate-form flex-sb flex-w" action="/userRegister" modelAttribute="newUser" method="post">
-					<span class="login100-form-title p-b-51">
+            <form action="/userRegister" modelAttribute="newUser" method="post">
+					<span class="">
 						Register
-					</span>
+					</span><br><br>
 
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="">
+                    <span class="focus-input100">First name</span><br>
                     <input class="input100" type="text" name="firstName" placeholder="firstName">
-                    <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="">
+                    <span class="focus-input100">User name</span><br>
                     <input class="input100" type="text" name="userName" placeholder="userName">
-                    <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="">
+                    <span class="focus-input100">Password</span><br>
                     <input class="input100" type="text" name="password" placeholder="password">
-                    <span class="focus-input100"></span>
                 </div>
 
-                <div class="container-login100-form-btn m-t-17">
+                <div class=""><br>
                     <button class="login100-form-btn" type="submit">
                         Register
                     </button>
                 </div>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
         </div>
-    </div>
 </div>
 </body>
 </html>

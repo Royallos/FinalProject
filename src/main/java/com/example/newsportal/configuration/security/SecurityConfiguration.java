@@ -30,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2/**").permitAll()
                 .and()
                 .formLogin()
+                .defaultSuccessUrl("/showMeetings")
                 .and()
                 .logout()
                 .and()

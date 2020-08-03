@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title>Category</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="footer"><pre>Designed by Aleksandr Rallo  </pre></div>
+<div class="header">
+    <a href="/showMeetings" class="logo">MeetingApp</a>
+    <div class="header-right">
+        <a class="active" th:href="@{'/account/' + ${user.id}}">Your account</a>
+        <a href="/logout">LogOut</a>
+    </div>
+</div>
+Категория
+<br>
+<tr th:text="${category.name}"></tr>
+<br>
+Юзер
+<br>
+<tr th:each="Thisuser : ${category.users}">
+    <a th:href="@{'/user/' + ${Thisuser.id}}">
+        <span><td th:text="${Thisuser.userName}"></td></span>
+    </a>
+</tr>
+<br>
+Митинг
+<br>
+<tr th:each="meeting : ${category.meetings}">
+    <a th:href="@{'/meeting/' + ${meeting.id}}">
+        <span><td th:text="${meeting.name}"></td></span>
+    </a>
+</tr>
+</body>
+</html>

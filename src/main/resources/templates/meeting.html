@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Meetings</title>
+    <meta name="referrer" content="no-referrer">
+    <base href="/">
+    <title>Meeting</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="meeting.js.js"></script>
 </head>
 <body>
 <div class="footer"><pre>Designed by Aleksandr Rallo  </pre></div>
@@ -16,40 +16,31 @@
         <a class="active" th:href="@{'/account/' + ${user.id}}">Your account</a>
         <a href="/logout">LogOut</a>
     </div>
-
 </div>
-<tr th:each="item : ${meetings}">
-    <span><td th:text="${item.name}"></td></span>
-    <br>
-    <span><td th:text="${item.desctription}"></td></span>
-    <br>
-    <span><td th:text="${item.eventDate}"></td></span>
-    <button class="show">Show details</button>
-    <div class="menu"  style="display: none;">
-<th:block th:each="Thisuser : ${item.users}">
-        Юзер
-        <br>
+Митинг
+<br>
+<tr th:text="${meeting.name}"></tr>
+<button id="show" onclick="f()">Show details</button>
+<div class="menu" style="display: none;">
+    <div class="meeting" name="meeting">
+        The content is
+    </div>
+</div>
+<br>
+Юзер
+<br>
+<tr th:each="Thisuser : ${meeting.users}">
     <a th:href="@{'/user/' + ${Thisuser.id}}">
         <span><td th:text="${Thisuser.userName}"></td></span>
     </a>
+</tr>
 <br>
-</th:block>
-<th:block th:each="category : ${item.categories}">
 Категория
 <br>
+<tr th:each="category : ${meeting.categories}">
     <a th:href="@{'/category/' + ${category.id}}">
         <span><td th:text="${category.name}"></td></span>
     </a>
-</th:block>
-    </div>
 </tr>
-<br>
-<script>
-    $(document).ready(function(){
-        $('.show').click(function() {
-            $('.menu').toggle("slide");
-        });
-    });
-</script>
 </body>
 </html>

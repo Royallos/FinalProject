@@ -1,55 +1,50 @@
-<html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>addMeeting</title>
     <meta charset="UTF-8">
-    <style>
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-<div class="limiter">
-    <div class="container-login100">
-        <div><p>
-            <c:if test="${error}">
-                <c:out value="LOGIN FAILED" />
-            </c:if>
-        </p></div>
-        <div class="wrap-login100 p-t-50 p-b-90">
-            <form class="login100-form validate-form flex-sb flex-w" action="/addMeeting" modelAttribute="newMeeting" method="post">
-					<span class="login100-form-title p-b-51">
+<div class="footer"><pre>Designed by Aleksandr Rallo  </pre></div>
+<div class="header">
+    <a href="/showMeetings" class="logo">MeetingApp</a>
+    <div class="header-right">
+        <a class="active" th:href="@{'/account/' + ${user.id}}">Your account</a>
+        <a href="/logout">LogOut</a>
+    </div>
+</div>
+<div class="form">
+            <form action="/addMeeting" modelAttribute="newMeeting" method="post">
+					<span class="">
 						Add meeting
-					</span>
+					</span><br><br>
 
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="">
+                    <span class="focus-input100">Name</span><br>
                     <input class="input100" type="text" name="name" placeholder="name">
-                    <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="">
+                    <span class="focus-input100">Category</span><br>
                     <input class="input100" type="text" name="category" placeholder="category">
-                    <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="">
+                    <span class="focus-input100">Event date</span><br>
                     <input class="input100" type="text" name="eventDate" placeholder="eventDate">
-                    <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="">
+                    <span class="focus-input100">Description</span><br>
                     <input class="input100" type="text" name="description" placeholder="description">
-                    <span class="focus-input10000"></span>
                 </div>
 
-                <div class="container-login100-form-btn m-t-17">
+                <div class=""><br>
                     <button class="login100-form-btn" type="submit">
                         Add
                     </button>
                 </div>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
-        </div>
-    </div>
 </div>
 </body>
 </html>

@@ -17,7 +17,7 @@ public class Category {
     private String name;
 
     @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
-    private List<User> speakers;
+    private List<User> users;
 
     @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
     private List<Meeting> meetings;

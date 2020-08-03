@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,13 +34,13 @@ public class User {
     @JoinTable(name = "user_category",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_meeting",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "meeting_id", referencedColumnName = "id"))
-    private List<Meeting> meetings;
+    private List<Meeting> meetings = new ArrayList<>();
 
     @Override
     public String toString() {

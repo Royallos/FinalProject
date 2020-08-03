@@ -4,6 +4,7 @@ import com.example.newsportal.model.Meeting;
 import com.example.newsportal.model.User;
 import com.example.newsportal.repository.CategoryRepository;
 import com.example.newsportal.repository.MeetingRepository;
+import com.example.newsportal.repository.UserRepository;
 import com.example.newsportal.service.MeetingService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -16,20 +17,21 @@ public class MeetingServiceImpl implements MeetingService{
 
     private final MeetingRepository meetingRepository;
     private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
 
-    public MeetingServiceImpl(MeetingRepository meetingRepository, CategoryRepository categoryRepository) {
+    public MeetingServiceImpl(MeetingRepository meetingRepository, CategoryRepository categoryRepository, UserRepository userRepository) {
         this.meetingRepository = meetingRepository;
         this.categoryRepository = categoryRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public void setMeeting(Meeting meeting, String category) {
-        meetingRepository.save(meeting);
-        Meeting meeting1 = meetingRepository.findByName(meeting.getName());
-        List<Meeting> meetings = new ArrayList<>();
-        meetings.add(meeting1);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user.setMeetings(meetings);
-        categoryRepository.findByName(category).setMeetings(meetings);
+        meeting.getCategories().add(categoryRepository.findByName(category));
+        meetingRepository.save(meeting);
+        userRepository.findById(user.getId()).get().getMeetings().add(meeting);
+        userRepository.save(user);
+
     }
 }

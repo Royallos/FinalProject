@@ -1,40 +1,36 @@
-<html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>createCategory</title>
     <meta charset="UTF-8">
-    <style>
-
-    </style>
+    <title>createCategory</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-<div class="limiter">
-    <div class="container-login100">
-        <div><p>
-            <c:if test="${error}">
-                <c:out value="LOGIN FAILED" />
-            </c:if>
-        </p></div>
-        <div class="wrap-login100 p-t-50 p-b-90">
-            <form class="login100-form validate-form flex-sb flex-w" action="/createCategory" modelAttribute="newCategory" method="post">
+<div class="footer"><pre>Designed by Aleksandr Rallo  </pre></div>
+<div class="header">
+    <a href="/showMeetings" class="logo">MeetingApp</a>
+    <div class="header-right">
+        <a class="active" th:href="@{'/account/' + ${user.id}}">Your account</a>
+        <a href="/logout">LogOut</a>
+    </div>
+</div>
+<div class="form">
+            <form action="/createCategory" modelAttribute="newCategory" method="post">
 					<span class="login100-form-title p-b-51">
 						Create category
-					</span>
+					</span><br><br>
 
                 <div class="wrap-input100 validate-input m-b-16">
+                    <span class="focus-input100">Name</span><br>
                     <input class="input100" type="text" name="name" placeholder="name">
-                    <span class="focus-input100"></span>
                 </div>
 
-                <div class="container-login100-form-btn m-t-17">
+                <div class=""><br>
                     <button class="login100-form-btn" type="submit">
                         Create
                     </button>
                 </div>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
-        </div>
-    </div>
 </div>
 </body>
 </html>

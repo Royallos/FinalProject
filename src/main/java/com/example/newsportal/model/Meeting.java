@@ -33,7 +33,7 @@ public class Meeting {
     private List<Category> categories = new ArrayList<>();
 
     @ManyToMany(mappedBy = "meetings", fetch = FetchType.LAZY)
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     @Override
     public String toString() {
