@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title>Meetings</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="meeting.js.js"></script>
+</head>
+<body>
+<div class="footer"><pre>Designed by Aleksandr Rallo  </pre></div>
+<div class="header">
+    <a href="/showMeetings" class="logo">MeetingApp</a>
+    <div class="header-right">
+        <a class="active" th:href="@{'/account/' + ${user.id}}">Your account</a>
+        <a href="/logout">LogOut</a>
+    </div>
+</div>
+<div>
+    <a href="/addMeeting">Add meeting</a>
+    <a href="/createCategory">Create category</a>
+    <button class="show">Your meeting</button>
+    <div class="menu"  style="display: none;">
+        <tr th:each="item : ${meetings}">
+            <br>
+            <a th:href="@{'/meeting/' + ${item.id}}">
+                <span><td th:text="${item.name}"></td></span>
+            </a>
+        </tr>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('.show').click(function() {
+            $('.menu').toggle("slide");
+        });
+    });
+</script>
+</body>
+</html>
